@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>Checkerboard</title>
+    <style>
+        .boxa{
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+        }
+        .boxb{
+            width: 100px;
+            height: 100px;
+            background-color: lightseagreen;
+        }
+        .lines{
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% for i in range(num) %}
+        <div class="lines">
+            {% for i in range(rowl)%}
+            <div class="boxa"></div>
+            <div class="boxb"></div>
+            {% endfor %}
+            
+        </div>
+        <div class="lines">
+            {% for i in range(rowl)%}
+            <div class="boxb"></div>
+            <div class="boxa"></div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+
+
+
+
+
+
+
+
+
+    </div>
+</body>
+</html>
