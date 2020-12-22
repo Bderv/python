@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>Document</title>
+    <style>
+        th{text-align: left;
+        background-color: blueviolet;}
+        table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+tr{display:inline-grid}
+    </style>
+</head>
+<body>
+    
+
+    <table style ="width: 100%; text-align: center;">
+        <tr>
+            <th>First Name</th>
+        {% for users in UserID %}
+            <td>{{users.first_name}}</td>
+        {% endfor %}
+        </tr>
+        <tr>
+            <th>Last Name</th>
+        {% for users in UserID %}
+            <td>{{users.last_name}}</td>
+        {% endfor %}
+        </tr>
+        <tr>
+            <th>Full Name</th>
+            {% for users in UserID %}
+            <td>{{users.first_name}} {{users.last_name}}</td>
+            {% endfor %}
+        </tr>
+    </table>
+    
+    
+
+</body>
+</html>
