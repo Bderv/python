@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static '/style.css' %}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Counter:</h1>
+    <a href="/addtwo"><button>+ 2</button></a>
+    <h4>{{request.session.Visitcount}} times.</h4>
+    <h4>{{request.session.Realcount}} refreshes.</h4>
+    <form action="/addby">
+        <label for="amount">Add by:</label>
+        <input type="text" id="amount" name="amount"><br>
+        <input type="submit" value="Submit"><br><br>
+    </form>
+    
+    <a href="/destroy_session"><button>Start Over!</button></a>
+    
+</body>
+</html>
