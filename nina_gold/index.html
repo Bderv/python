@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static '/style.css' %}"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div class="wrapper">
+    <div class="row">
+        <h1>Total Gold:  </h1>
+        <h1 class="goldbox">{{ request.session.total_gold }}</h1>
+    </div>
+    <div class="toprow">
+        <div class="col">
+            <h2>Farm</h2>
+            <h4>(earns 10-20 gold)</h4>
+            <form action="/process_money" method="POST">
+                {% csrf_token %}
+                <input type="hidden" value="farm" name="places">
+                <button class="btn btn-primary">Find Gold!</button>
+            </form>
+        </div>
+        <div class="col">
+            <h2>Cave</h2>
+            <h4>(earns 5-10 gold)</h4>
+            <form action="/process_money" method="POST">
+                {% csrf_token %}
+                <input type="hidden" value="cave" name="places">
+                <button class="btn btn-primary">Find Gold!</button>
+            </form>
+        </div>
+        <div class="col">
+            <h2>House</h2>
+            <h4>(earns 2-5 gold)</h4>
+            <form action="/process_money" method="POST">
+                {% csrf_token %}
+                <input type="hidden" value="house" name="places">
+                <button class="btn btn-primary">Find Gold!</button>
+            </form>
+        </div>
+        <div class="casino">
+            <h2>Casino</h2>
+            <h4>(earns/takes 0-50 gold)</h4>
+            <form action="/process_money" method="POST">
+                {% csrf_token %}
+                <input type="hidden" value="casino" name="places">
+                <button class="btn btn-primary">Find Gold!</button>
+            </form>
+        </div>
+    </div>
+    <div class="bottomrow">
+        <h2>Activities:</h2>
+        <div class="moneylog">
+            {% for activity in request.session.activities reversed %}
+                <p 
+                    {% if activity.action == 'lost' %}
+                    class="text-danger"
+                    {% else %}
+                    class="text-success"
+                    {% endif%}
+                >{{ activity.message }}</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+</body>
+</html>
