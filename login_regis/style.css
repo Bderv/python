@@ -1,0 +1,19 @@
+.wrapper{
+    display: flex;
+    justify-content: space-evenly;
+}
+.top{
+    display: flex;
+    justify-content: space-between;
+}
+.left{
+    border: solid;
+    padding: 15px;
+}
+.right{
+    border: solid;
+    padding: 15px;
+}
+.topBar{
+    float: right;
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static '/style.css' %}"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="topBar">
+        <p><a href="/quotes">Dashboard</a>  |  <a href="/logout">Logout</a></p>
+    </div>
+    <h3>hello</h3>
+    <p>Posts by {{qPoster.first_name}}</p>
+    <h3>{{qPoster.quotes_uploaded.all}}</h3>
+    
+        
+        {% for q in qPoster.quotes_uploaded.all %}
+        <p>{{q.content}}</p> 
+        {% endfor %}
+        
+    
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static '/style.css' %}"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="top">
+    <h1>Welcome, {{loggedinuser.first_name}}!</h1>
+    <a href="/logout">Logout</a>
+    </div>
+    <div class="wrapper">
+        <div class="left">
+            <h4>Quotable Quotes</h4>
+            {% for q in notlikedquotes %}
+            <p>{{q.content}}</p>
+            <p>Posted by <a href="/users/{{q.uploader.id}}">{{q.uploader.first_name}}</a></p>
+            <a href="/like/{{q.id}}"><button>Add to Favorites</button></a>
+            {% endfor %}
+        </div>
+        <div class="right">
+            <h4>Your Favorites</h4>
+            {% for q in likedquotes %}
+            <p>{{q.content}}</p>
+            <p>Posted by <a href="/users/{{q.uploader.id}}">{{q.uploader.first_name}}</a></p>
+            {% if loggedinuser != q.uploader %}<a href="/unlike/{{q.id}}"><button>Unlike</button></a>{% endif %}
+            {% if loggedinuser == q.uploader %}<a href="/delete/{{q.id}}"><button>Delete</button></a>{% endif %}
+            {% endfor %}
+            <h4>Contribute a Quote</h4>
+            <form action="/createQuote" method="post">
+                {% csrf_token %}
+                <p>Quoted By: <input type="text" name="author" id=""></p>
+                <p>Message: <textarea name="content" id="" cols="30" rows="10"></textarea></p>
+                <p><input type="submit" value="Add"></p>
+            </form>
+            {% if messages %}
+            <ul>
+                {% for message in messages %}
+                <li>{{message}}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
