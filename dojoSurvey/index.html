@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static '/style.css' %}"/>
+    <title>Document</title>
+    
+</head>
+<body>
+    <form action="/users" method="post">
+        {% csrf_token %}
+        <p>Your Name: <input name="name" type="text"></p>
+        <label for="dojoLoc">Dojo Location:</label>
+        <select id="dojoLoc" name="location">
+        <option value="Chicago">Chicago</option>
+        <option value="Washington">Washington</option>
+        <option value="Dallas">Dallas</option>
+        </select>
+        <br>
+        <label for="language">Favorite Language:</label>
+        <select name="language" id="language">
+        <option value="CSS">CSS</option>
+        <option value="java">java</option>
+        <option value="Python">Python</option>
+        <option value="MEAN">MEAN</option>
+        <option value="Ruby on Rails">Ruby on Rails</option>
+        </select>
+        <br>
+        <div class="row">
+        <label for="subject">Comment (optional):</label>
+        <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+        </div>
+        <input type="submit" value="Button">
+        </form>
+
+    </div>
+</body>
+</html>

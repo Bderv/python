@@ -1,0 +1,10 @@
+form{
+    text-align: center;
+}
+.row{
+    display: flex;
+    justify-content: center;
+}
+body{
+    font-family: sans-serif;
+}
